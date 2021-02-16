@@ -103,27 +103,27 @@ class SettingsView extends View
 
 	_setup_form_field_changePasswordButton()
 	{
-		const self = this
-		const div = commonComponents_forms.New_fieldContainerLayer(self.context)
-		div.style.padding = "19px 24px 20px 24px"
-		{
-			const view = commonComponents_navigationBarButtons.New_GreyButtonView(self.context)
-			view.layer.style.display = "inline-block"
-			view.layer.style.padding = "0 10px"
-			view.layer.style.margin = "0"
-			self.changePasswordButtonView = view
-			view.layer.addEventListener("click", function(e)
-			{
-				e.preventDefault()
-				if (view.isEnabled !== false) {
-					self.context.passwordController.Initiate_ChangePassword() // this will throw if no pw has been entered yet
-				}
-				return false
-			})
-			// this will set its title on VWA
-			div.appendChild(view.layer)
-		}
-		self.form_containerLayer.appendChild(div)
+		// const self = this
+		// const div = commonComponents_forms.New_fieldContainerLayer(self.context)
+		// div.style.padding = "19px 24px 20px 24px"
+		// {
+		// 	const view = commonComponents_navigationBarButtons.New_GreyButtonView(self.context)
+		// 	view.layer.style.display = "inline-block"
+		// 	view.layer.style.padding = "0 10px"
+		// 	view.layer.style.margin = "0"
+		// 	self.changePasswordButtonView = view
+		// 	view.layer.addEventListener("click", function(e)
+		// 	{
+		// 		e.preventDefault()
+		// 		if (view.isEnabled !== false) {
+		// 			self.context.passwordController.Initiate_ChangePassword() // this will throw if no pw has been entered yet
+		// 		}
+		// 		return false
+		// 	})
+		// 	// this will set its title on VWA
+		// 	div.appendChild(view.layer)
+		// }
+		// self.form_containerLayer.appendChild(div)
 	}
 	_setup_form_field_appTimeoutSlider()
 	{
@@ -638,9 +638,10 @@ class SettingsView extends View
 		self.layer.style.paddingTop = `41px`
 		const passwordController = self.context.passwordController
 		{ // config change pw btn text, app timeout slider, …
-			if (!self.changePasswordButtonView) {
-				throw "Expected self.changePasswordButtonView"
-			}
+			// if (!self.changePasswordButtonView) {
+			// 	throw "Expected self.changePasswordButtonView"
+			// }
+			/* 
 			const layer = self.changePasswordButtonView.layer
 			const userSelectedTypeOfPassword = passwordController.userSelectedTypeOfPassword
 			const passwordType_humanReadableString = passwordController.HumanReadable_AvailableUserSelectableTypesOfPassword()[userSelectedTypeOfPassword]
@@ -649,6 +650,7 @@ class SettingsView extends View
 				layer.innerHTML = "Change " + capitalized_passwordType
 				self.appTimeoutSlider_messageLayer.innerHTML = "Idle time before your " + passwordType_humanReadableString + " is required"
 			}
+			*/
 		}
 		if (passwordController.hasUserSavedAPassword !== true) {
 			if (self.changePasswordButtonView) {
